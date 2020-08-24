@@ -80,7 +80,7 @@ const login = async (req, res) => {
 
     // SEND SUCCESS WITH TOKEN
     res.status(200).json({token});
-    console.log(user._id)
+    console.log(foundUser._id)
   } catch (error) {
     console.log(error);
     return res.status(500).json({
