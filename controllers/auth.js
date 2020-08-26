@@ -17,7 +17,7 @@ const register = async (req, res) => {
 
   try {
     // CHECK IF EMAIL ALREADY REGISTERED
-    const foundUser = await db.User.findOne({ email: req.body.email });
+    const foundUser = await db.User.findOne({ username: req.body.username });
 
     // SEND ERROR IF FOUND USER
     if (foundUser) {
@@ -51,9 +51,9 @@ const login = async (req, res) => {
   console.log(req.body);
   try {
     // FIND USER BY EMAIL (OR USERNAME)
-    const foundUser = await db.User.findOne({ email: req.body.email });
-    // const foundUser = await db.User.findOne({ username: req.body.username });
-
+    // const foundUser = await db.User.findOne({ email: req.body.email });
+    const foundUser = await db.User.findOne({ username: req.body.username });
+    console.log(foundUser)
     if (!foundUser) {
       return res.status(400).json({
         status: 400,
@@ -71,7 +71,8 @@ const login = async (req, res) => {
     }
 
     // CREATE TOKEN PAYLOAD
-    const payload = {id: foundUser._id};
+    const payload = {id: foundUser._id, username: foundUser.username};
+    console.log(payload)
     const secret = process.env.JWT_SECRET;
     const expiration = {expiresIn: "1h"};
     
@@ -80,7 +81,7 @@ const login = async (req, res) => {
 
     // SEND SUCCESS WITH TOKEN
     res.status(200).json({token});
-    console.log(foundUser._id)
+    console.log(foundUser.username)
   } catch (error) {
     console.log(error);
     return res.status(500).json({
