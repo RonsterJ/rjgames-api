@@ -20,5 +20,6 @@ app.use(express.json());
 // Auth Routes
 app.use('/api/v1/auth', routes.auth);
 app.use('/api/v1/articles', routes.articles);
+app.use('/api/v1/users', routes.users)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

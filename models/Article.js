@@ -7,12 +7,11 @@ const articleSchema = mongoose.Schema({
   },
   author: {
     type: String,
-    required: [true],
   },
   articleBody: {
     type: String,
     minlength: 4,
-    required: [true, 'Cannot post an empty article'],
+    // required: [true, 'Cannot post an empty article'],
   },
   createdAt: {
     type: Date,
