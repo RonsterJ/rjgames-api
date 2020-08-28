@@ -17,6 +17,13 @@ const articleSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  author: {
+    type: String,
+    // required: true
+  },
+  authorID: {
+    type: String,
+  }
 });
 
 const Article = mongoose.model('Article', articleSchema);

@@ -1,7 +1,7 @@
 const db = require('../models');
 
 const show = (req, res) => {
-  db.User.findById(req.params.username, (err, foundUser) => {
+  db.User.findById(req.params, (err, foundUser) => {
     if (err) console.log('Error in users#show:', err);
 
     res.status(200).send(foundUser);

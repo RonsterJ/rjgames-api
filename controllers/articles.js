@@ -16,9 +16,10 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
+  // const userId=req.id
   db.Article.create(req.body, (err, savedArticle) => {
     if (err) console.log('Error in articles#create:', err);
-
+    // savedArticle.author.id=userId
     res.status(200).json(savedArticle);
   });
 };
@@ -39,7 +40,7 @@ const destroy = (req, res) => {
   db.Article.findByIdAndDelete(req.params.id, (err, deletedArticle) => {
     if (err) console.log('Error in article#destroy:', err);
 
-    res.status(200).json(deletedArticle);
+    res.status(200);
   });
 };
 

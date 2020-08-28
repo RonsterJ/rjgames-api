@@ -20,6 +20,7 @@ const userSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  articles: []
 });
 
 const User = mongoose.model('User', userSchema);
